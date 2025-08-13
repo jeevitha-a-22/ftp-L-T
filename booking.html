@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Training - Christ Strong</title>
+    <link rel="stylesheet" href="booking.css">
+    <script>
+        // Auto-update amount based on service
+        function updateAmount() {
+            const service = document.getElementById('service').value;
+            const amountField = document.getElementById('amount');
+            if (service === "Personal Training") {
+                amountField.value = "₹2000";
+            } else if (service === "Group Training") {
+                amountField.value = "₹1500";
+            } else if (service === "Online Coaching") {
+                amountField.value = "₹1000";
+            } else {
+                amountField.value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Your Training Session</h1>
+        <form action="confirmation.html" method="get">
+            <!-- Name -->
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Phone -->
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digits" required>
+
+            <!-- Service -->
+            <label for="service">Select Service:</label>
+            <select id="service" name="service" onchange="updateAmount()" required>
+                <option value="">-- Choose a Service --</option>
+                <option value="Personal Training">Personal Training</option>
+                <option value="Group Training">Group Training</option>
+                <option value="Online Coaching">Online Coaching</option>
+            </select>
+
+            <!-- Amount -->
+            <label for="amount">Amount (₹):</label>
+            <input type="text" id="amount" name="amount" readonly required>
+
+            <!-- Payment Method -->
+            <label for="payment">Payment Method:</label>
+            <select id="payment" name="payment" required>
+                <option value="">-- Select Payment Method --</option>
+                <option value="UPI">UPI</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Net Banking">Net Banking</option>
+            </select>
+
+            <!-- Submit -->
+            <button type="submit">Confirm Booking</button>
+        </form>
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </div>
+</body>
+</html>
